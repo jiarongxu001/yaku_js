@@ -1,0 +1,63 @@
+
+{
+  "name": "yaku-js",
+  "version": "1.0.0",
+  "description": "JavaScript port of Yaku Uxntal assembler/interpreter - A stack-based virtual machine and assembler for the Uxntal language",
+  "main": "bin/yaku.js",
+  "type": "module",
+  "bin": {
+    "yaku-js": "./bin/yaku.js",
+    "yaku": "./bin/yaku.js"
+  },
+  "scripts": {
+    "start": "node bin/yaku.js",
+    "yaku": "node bin/yaku.js",
+    "test": "node bin/yaku.js --help",
+    "test:basic": "node bin/yaku.js -r tests/simple-calc.tal",
+    "test:syntax": "find lib -name '*.js' -exec node -c {} \\;",
+    "dev": "python3 -m http.server 8000 --directory web",
+    "dev-win": "python -m http.server 8000 --directory web",
+    "build": "echo 'Build complete - no build step required for pure JS'",
+    "clean": "rm -f *.rom",
+    "install-global": "npm install -g ."
+  },
+  "keywords": [
+    "uxntal",
+    "assembler", 
+    "interpreter",
+    "virtual-machine",
+    "stack-machine",
+    "yaku",
+    "uxn",
+    "compiler",
+    "bytecode",
+    "programming-language",
+    "javascript"
+  ],
+  "author": {
+    "name": "Your Name",
+    "email": "your.email@example.com"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/yaku-js.git"
+  },
+  "files": [
+    "bin/",
+    "lib/",
+    "web/",
+    "tests/",
+    "README.md"
+  ],
+  "directories": {
+    "bin": "./bin",
+    "lib": "./lib",
+    "test": "./tests"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
