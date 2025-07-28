@@ -1,5 +1,5 @@
 // editor.js - Web界面控制器
-import { main as yakuMain } from '/lib/Yaku.js';
+import { main as yakuMain } from '../lib/Yaku.js';
 
 
 class YakuWebInterface {

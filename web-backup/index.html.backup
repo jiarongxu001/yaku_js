@@ -5,9 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yaku - UXN Assembler & Interpreter</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
+        <!-- Header -->
         <header class="header">
             <div class="logo">
                 <h1>🗾 Yaku</h1>
@@ -16,39 +20,54 @@
             <div class="version">v1.0.0</div>
         </header>
 
+        <!-- Main Content -->
         <main class="main-content">
+            <!-- Code Editor Section -->
             <section class="editor-section">
                 <div class="section-header">
                     <h2>📝 Uxntal Code Editor</h2>
                     <div class="file-controls">
-                        <input type="file" id="file-input" accept=".tal,.txt" style="display: none;">
-                        <button id="load-file-btn" class="btn btn-secondary">📁 Load File</button>
-                        <button id="save-file-btn" class="btn btn-secondary">💾 Save</button>
+                        <input type="file" id="file-input" accept=".tal" style="display: none;">
+                        <button id="load-file" class="btn btn-secondary">📁 Load File</button>
+                        <button id="save-file" class="btn btn-secondary">💾 Save</button>
                         <select id="example-select" class="example-selector">
-                            <option value="">Select Example...</option>
+                            <option value="">Load Example...</option>
                             <option value="hello-world">Hello World</option>
-                            <option value="simple-calc">Simple Calculator</option>
+                            <option value="calculator">Simple Calculator</option>
                             <option value="fibonacci">Fibonacci</option>
-                            <option value="memory-test">Memory Test</option>
                         </select>
                     </div>
                 </div>
                 <div class="editor-container">
-                    <textarea id="code-editor" class="code-editor" placeholder="Enter your Uxntal code here...">|0100
+                    <textarea id="code-editor" class="code-editor" placeholder="Enter your Uxntal code here...">( Hello World Example )
 
-@main
-    #42 #18 DEO
-    BRK</textarea>
+|0100 ( -> )
+
+@on-reset ( -> )
+	;hello-str ,print-str JSR
+	#80 .System/state DEO
+	BRK
+
+@print-str ( str* -> )
+	@loop
+		LDAk DUP ,&end JCN
+		#18 DEO
+		INC2 ,loop JMP
+	&end
+		POP2 JTS
+
+@hello-str "Hello, 20 "World! 00</textarea>
                 </div>
             </section>
 
+            <!-- Control Panel -->
             <section class="controls-section">
                 <div class="section-header">
                     <h2>⚙️ Controls</h2>
                 </div>
                 <div class="control-panel">
                     <div class="control-group">
-                        <h3>ASSEMBLY OPTIONS</h3>
+                        <h3>Assembly Options</h3>
                         <label class="checkbox-label">
                             <input type="checkbox" id="option-assemble" checked>
                             Assemble (-a)
@@ -64,7 +83,7 @@
                     </div>
                     
                     <div class="control-group">
-                        <h3>DEBUG OPTIONS</h3>
+                        <h3>Debug Options</h3>
                         <label class="checkbox-label">
                             <input type="checkbox" id="option-verbose">
                             Verbose (-V)
@@ -80,7 +99,7 @@
                     </div>
 
                     <div class="control-group">
-                        <h3>ACTIONS</h3>
+                        <h3>Actions</h3>
                         <button id="execute-btn" class="btn btn-primary">▶️ Execute</button>
                         <button id="clear-output" class="btn btn-secondary">🗑️ Clear Output</button>
                         <button id="download-rom" class="btn btn-secondary" style="display: none;">⬇️ Download ROM</button>
@@ -88,6 +107,7 @@
                 </div>
             </section>
 
+            <!-- Output Section -->
             <section class="output-section">
                 <div class="section-header">
                     <h2>📤 Output</h2>
@@ -114,8 +134,20 @@
                 </div>
             </section>
         </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Based on the Perl implementation by <a href="https://codeberg.org/wimvanderbauwhede/yaku" target="_blank">Wim Vanderbauwhede</a></p>
+            <p>Learn more about <a href="https://wiki.xxiivv.com/site/uxntal.html" target="_blank">Uxntal</a> and <a href="https://wiki.xxiivv.com/site/uxn.html" target="_blank">UXN</a></p>
+        </footer>
     </div>
 
-    <script src="app.js"></script>
+    <!-- Loading Spinner -->
+    <div id="loading-spinner" class="loading-spinner" style="display: none;">
+        <div class="spinner"></div>
+        <p>Processing...</p>
+    </div>
+
+    <script type="module" src="/web/editor.js"></script>
 </body>
 </html>
