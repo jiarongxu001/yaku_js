@@ -1,0 +1,9 @@
+{
+  "name": "yaku-js",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "test": "node bin/yaku.js -h",
+    "web": "python3 -m http.server 8080"
+  }
+}

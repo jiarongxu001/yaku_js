@@ -1,0 +1,19 @@
+( Hello World Test )
+
+|0100
+
+@main
+    #48 #18 DEO  ( H )
+    #65 #18 DEO  ( e )
+    #6c #18 DEO  ( l )
+    #6c #18 DEO  ( l )
+    #6f #18 DEO  ( o )
+    #20 #18 DEO  ( space )
+    #57 #18 DEO  ( W )
+    #6f #18 DEO  ( o )
+    #72 #18 DEO  ( r )
+    #6c #18 DEO  ( l )
+    #64 #18 DEO  ( d )
+    #21 #18 DEO  ( ! )
+    #0a #18 DEO  ( newline )
+    BRK

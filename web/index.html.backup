@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yaku - UXN Assembler & Interpreter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <h1>🗾 Yaku</h1>
+                <p class="subtitle">UXN Assembler & Interpreter in JavaScript</p>
+            </div>
+            <div class="version">v1.0.0</div>
+        </header>
+
+        <main class="main-content">
+            <section class="editor-section">
+                <div class="section-header">
+                    <h2>📝 Uxntal Code Editor</h2>
+                    <div class="file-controls">
+                        <input type="file" id="file-input" accept=".tal,.txt" style="display: none;">
+                        <button id="load-file-btn" class="btn btn-secondary">📁 Load File</button>
+                        <button id="save-file-btn" class="btn btn-secondary">💾 Save</button>
+                        <select id="example-select" class="example-selector">
+                            <option value="">Select Example...</option>
+                            <option value="hello-world">Hello World</option>
+                            <option value="simple-calc">Simple Calculator</option>
+                            <option value="fibonacci">Fibonacci</option>
+                            <option value="memory-test">Memory Test</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="editor-container">
+                    <textarea id="code-editor" class="code-editor" placeholder="Enter your Uxntal code here...">|0100
+
+@main
+    #42 #18 DEO
+    BRK</textarea>
+                </div>
+            </section>
+
+            <section class="controls-section">
+                <div class="section-header">
+                    <h2>⚙️ Controls</h2>
+                </div>
+                <div class="control-panel">
+                    <div class="control-group">
+                        <h3>ASSEMBLY OPTIONS</h3>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="option-assemble" checked>
+                            Assemble (-a)
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="option-run" checked>
+                            Run (-r)
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="option-print">
+                            Print Code (-p)
+                        </label>
+                    </div>
+                    
+                    <div class="control-group">
+                        <h3>DEBUG OPTIONS</h3>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="option-verbose">
+                            Verbose (-V)
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="option-show-stacks">
+                            Show Stacks (-s)
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="option-warnings">
+                            Fewer Warnings (-W)
+                        </label>
+                    </div>
+
+                    <div class="control-group">
+                        <h3>ACTIONS</h3>
+                        <button id="execute-btn" class="btn btn-primary">▶️ Execute</button>
+                        <button id="clear-output" class="btn btn-secondary">🗑️ Clear Output</button>
+                        <button id="download-rom" class="btn btn-secondary" style="display: none;">⬇️ Download ROM</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="output-section">
+                <div class="section-header">
+                    <h2>📤 Output</h2>
+                    <div class="output-tabs">
+                        <button class="tab-btn active" data-tab="console">Console</button>
+                        <button class="tab-btn" data-tab="assembly">Assembly</button>
+                        <button class="tab-btn" data-tab="memory">Memory</button>
+                        <button class="tab-btn" data-tab="stacks">Stacks</button>
+                    </div>
+                </div>
+                <div class="output-container">
+                    <div id="console-output" class="output-pane active">
+                        <pre class="output-content">Ready to execute Uxntal code...</pre>
+                    </div>
+                    <div id="assembly-output" class="output-pane">
+                        <pre class="output-content">Assembly output will appear here...</pre>
+                    </div>
+                    <div id="memory-output" class="output-pane">
+                        <pre class="output-content">Memory dump will appear here...</pre>
+                    </div>
+                    <div id="stacks-output" class="output-pane">
+                        <pre class="output-content">Stack information will appear here...</pre>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
